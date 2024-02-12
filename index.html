@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로또 번호 생성</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #333;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #sortedRandomNumbers {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+<h1>이번 주의 로또 번호</h1>
+<button onclick="generateAndSortRandomNumbers()">생성</button>
+<p id="sortedRandomNumbers"></p>
+
+<script>
+    function generateAndSortRandomNumbers() {
+        var numbers = [];
+        while (numbers.length < 6) {
+            var randomNumber = Math.floor(Math.random() * 45) + 1;
+            if (!numbers.includes(randomNumber)) {
+                numbers.push(randomNumber);
+            }
+        }
+        numbers.sort(function(a, b) {
+            return a - b;
+        });
+        document.getElementById("sortedRandomNumbers").innerHTML = "행운 번호: " + numbers.join(', ');
+    }
+</script>
+</body>
+</html>
